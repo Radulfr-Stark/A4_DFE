@@ -1,0 +1,503 @@
+/* ===================================
+   RESET E CONFIGURAÇÕES GLOBAIS
+   =================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================
+   PALETA DE CORES - TEMA AUTOMOTIVO
+   =================================== */
+:root {
+  --primary-color: #1e3a5f;       /* Azul escuro profissional */
+  --secondary-color: #2c5aa0;     /* Azul médio */
+  --accent-color: #ff6b35;        /* Laranja para destaque */
+  --success-color: #2ecc71;       /* Verde sucesso */
+  --warning-color: #f39c12;       /* Amarelo aviso */
+  --danger-color: #e74c3c;        /* Vermelho perigo */
+  --light-bg: #f8f9fa;            /* Fundo claro */
+  --text-light: #6c757d;          /* Texto claro */
+  --border-color: #dee2e6;        /* Borda */
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===================================
+   NAVEGAÇÃO
+   =================================== */
+.navbar-custom {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  box-shadow: var(--shadow);
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+  margin-left: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===================================
+   CABEÇALHO
+   =================================== */
+.header-custom {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-custom::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+
+.header-custom .display-4 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   CARDS
+   =================================== */
+.card-custom {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  background: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+  border: none;
+  padding: 1.5rem;
+}
+
+.card-body {
+  background-color: #ffffff;
+}
+
+/* ===================================
+   SEÇÕES DO FORMULÁRIO
+   =================================== */
+.form-section {
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--light-bg);
+}
+
+.form-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  position: relative;
+  padding-left: 10px;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+/* ===================================
+   INPUTS E FORMULÁRIOS
+   =================================== */
+.form-control,
+.form-select {
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.2rem rgba(44, 90, 160, 0.25);
+  background-color: #ffffff;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* ===================================
+   VALIDAÇÃO
+   =================================== */
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: var(--danger-color);
+}
+
+.form-control.is-valid,
+.form-select.is-valid {
+  border-color: var(--success-color);
+}
+
+.invalid-feedback {
+  color: var(--danger-color);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.was-validated .form-select:invalid ~ .invalid-feedback {
+  display: block;
+}
+
+/* ===================================
+   RADIO BUTTONS E CHECKBOXES
+   =================================== */
+.form-check {
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.form-check-input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.25rem;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.form-check-input:checked {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.form-check-input:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.2rem rgba(44, 90, 160, 0.25);
+}
+
+.form-check-label {
+  cursor: pointer;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.form-check-input:checked ~ .form-check-label {
+  color: var(--secondary-color);
+}
+
+.form-check-inline {
+  margin-right: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ===================================
+   GRUPOS DE FORMULÁRIO
+   =================================== */
+.priority-group {
+  background-color: var(--light-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.additional-services-group {
+  background-color: var(--light-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .additional-services-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================================
+   ÁREA DE UPLOAD
+   =================================== */
+.upload-area {
+  border: 2px dashed var(--secondary-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: rgba(44, 90, 160, 0.05);
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  background-color: rgba(44, 90, 160, 0.1);
+  border-color: var(--accent-color);
+}
+
+.upload-area .form-control {
+  border: none;
+  background: transparent;
+}
+
+.upload-area .form-control:focus {
+  box-shadow: none;
+  border: none;
+}
+
+/* ===================================
+   BOTÕES
+   =================================== */
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #163050 0%, #1e4a7a 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline-secondary {
+  color: var(--text-light);
+  border: 2px solid var(--border-color);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--light-bg);
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* ===================================
+   ALERTAS
+   =================================== */
+.alert {
+  border: none;
+  border-radius: 8px;
+  border-left: 4px solid;
+  animation: slideIn 0.3s ease;
+}
+
+.alert-success {
+  border-left-color: var(--success-color);
+  background-color: rgba(46, 204, 113, 0.1);
+  color: var(--success-color);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   RODAPÉ
+   =================================== */
+.footer-custom {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  margin-top: 5rem;
+}
+
+.footer-custom h6 {
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.footer-custom p {
+  margin: 0.25rem 0;
+}
+
+.footer-custom hr {
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 1.5rem 0;
+}
+
+/* ===================================
+   RESPONSIVIDADE
+   =================================== */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+
+  .form-check-inline {
+    margin-right: 1rem;
+  }
+
+  .btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-nav .nav-link {
+    margin-left: 0;
+    padding: 0.5rem 0;
+  }
+
+  .header-custom {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .additional-services-group {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-custom {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===================================
+   EFEITOS E ANIMAÇÕES
+   =================================== */
+a {
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* Animação de fade para elementos carregados */
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Efeito de foco em inputs */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+/* Customize scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
